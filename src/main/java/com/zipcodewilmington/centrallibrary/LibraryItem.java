@@ -1,11 +1,12 @@
 package com.zipcodewilmington.centrallibrary;
 
-public abstract class LibraryItem {
+public abstract class LibraryItem implements Searchable {
     private int id;
     private String title;
     private String location;
     private boolean isAvailable;
 
+//constructor
     public LibraryItem(int id, String title, String location){
         this.id = id;
         this.title = title;
@@ -51,8 +52,23 @@ public abstract class LibraryItem {
 
     } 
 
+    public boolean matchesKeyword(String keyword) {
+        for (String field :  getSearchableFields()) {
+            if (field != null && field.contains(keyword)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public abstract double calculateLateFee(int daysLate);
-    public abstract int getMaxBorrowDays();
+    public abstract int getMaxBorrowDays(); //lofi
     public abstract String getItemType();
+    public abstract String[] getSearchableFields();
+    
+
+    
 
 }
+
+
