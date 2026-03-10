@@ -1,6 +1,6 @@
 package com.zipcodewilmington.centrallibrary;
 
-    public class Address {
+public class Address {
     //Instance vairables
     private String street;
     private String city;
@@ -8,11 +8,11 @@ package com.zipcodewilmington.centrallibrary;
     private String zipCode;
     
     //Defalut Setting
-public Address() {
-    this.street = "";
-    this.city = "";
-    this.state = "";
-    this.zipCode = "";
+    public Address() {
+        this.street = "";
+        this.city = "";
+        this.state = "";
+        this.zipCode = "";
     }
 
     //Parameterized Constructor
