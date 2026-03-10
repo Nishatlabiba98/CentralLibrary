@@ -1,5 +1,6 @@
 package com.zipcodewilmington.centrallibrary;
 
+
 public abstract class LibraryItem  {
     private int id;
     private String title;
@@ -7,12 +8,19 @@ public abstract class LibraryItem  {
     private boolean isAvailable;
 
 //constructor
+
+
+    public LibraryItem() {
+
+    }
+
     public LibraryItem(int id, String title, String location){
         this.id = id;
         this.title = title;
         this.location = location; 
         this.isAvailable = true;
 
+       //getters and setters 
         
     }
     public int getId() {
@@ -62,6 +70,7 @@ public abstract class LibraryItem  {
     }
 
     public abstract double calculateLateFee(int daysLate);
+    public abstract int getMaxBorrowDays(); 
     public abstract int getMaxBorrowDays(); //lofi
     public abstract String getItemType();
     public abstract String[] getSearchableFields();
