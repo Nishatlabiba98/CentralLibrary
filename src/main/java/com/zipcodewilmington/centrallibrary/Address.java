@@ -1,0 +1,44 @@
+package com.zipcodewilmington.centrallibrary;
+
+    public class Address {
+    //Instance vairables
+    private String street;
+    private String city;
+    private String state;
+    private String zipCode;
+    
+    //Defalut Setting
+public Address() {
+    this.street = "";
+    this.city = "";
+    this.state = "";
+    this.zipCode = "";
+    }
+
+    //Parameterized Constructor
+    public Address(String street, String city, String state, String zipCode) {
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+    }
+
+    //Getter
+    public String gitStreet() {
+        return street;
+    }
+    public String gitCity() {
+        return city;
+    }
+    public String gitState() {
+        return state;
+    }
+    public String gitZipcode() {
+        return zipCode;
+    }
+    //Override for cleaner view
+    public String AddressString() {
+        return street + ", " + city + ", " + state + ", " + zipCode;
+    }
+} 
+
