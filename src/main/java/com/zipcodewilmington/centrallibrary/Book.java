@@ -43,8 +43,7 @@ public abstract class Book extends LibraryItem {
     }
     public void setPages(int pages) {
         this.pages = pages;
+        
     }
 }
 
-//lofi
-//lofi
