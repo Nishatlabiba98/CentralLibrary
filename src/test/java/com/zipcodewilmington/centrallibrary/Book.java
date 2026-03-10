@@ -1,7 +1,7 @@
 package com.zipcodewilmington.centrallibrary;
 
 public abstract class Book extends LibraryItem {
-
+    
     private String author;
     private String genre;
     private String publicationDate;
