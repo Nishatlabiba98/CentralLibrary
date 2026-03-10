@@ -21,6 +21,7 @@ public abstract class LibraryItem  {
         this.isAvailable = true;
 
        //getters and setters 
+        
     }
     public int getId() {
         return id;
@@ -70,6 +71,7 @@ public abstract class LibraryItem  {
 
     public abstract double calculateLateFee(int daysLate);
     public abstract int getMaxBorrowDays(); 
+    public abstract int getMaxBorrowDays(); //lofi
     public abstract String getItemType();
     public abstract String[] getSearchableFields();
     
