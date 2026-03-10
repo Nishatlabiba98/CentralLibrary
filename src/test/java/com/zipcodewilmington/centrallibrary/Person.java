@@ -1,47 +1,39 @@
-package com.github.zipcodewilmington.sample;
+
+package com.zipcodewilmington.centrallibrary;
 
 public class Person {
-}
+    private String name;
+    private String address;
+    private String phoneNumber;
+    private int age;
+    private String email;
 
-public class Address{
-    //Instance vairables
-    private String street;
-    private String city;
-    private String state;
-    private String zipCode;
-
-    //Defalut Setting
-public Address() {
-    this.street = "";
-    this.city = "";
-    this.state = "";
-    this.zipCode = "";
+    public Person(String name, String address, String phoneNumber, int age, String email) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        setAge(age);
+        this.email = email;
     }
 
-    //Parameterized Constructor
-    public Address(String street, String city, String state, String zipCode) {
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zipCode = zipCode;
-    }
+    public String getName() {return name; }
+    public String getAddress() {return address; }
+    public String getPhoneNumber() {return phoneNumber; }
+    public int getAge() {return age; }
+    public String getEmail() {return email;}
 
-    //Getter
-    public String getStreet() {
-        return street;
+    public void setName(String name) {this.name = name; }
+    public void setAddress(String address) {this.address = address; }
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber; }
+    public void setAge(int age) {
+        if (age < 0) throw new IllegalArgumentException("Age cannot be negative.");
+        this.age = age; 
     }
-    public String getCity() {
-        return city;
-    }
-    public String getState() {
-        return state;
-    }
-    public String getZipcode() {
-        return zipCode;
-    }
-    //Override for cleaner view
+    public void setEmail(String email) {this.email = email; }
+
+    @Override
     public String toString() {
-        return street + ", " + city + ", " + state + " " + zipCode;
+        return name + ", " + address + ", " + phoneNumber + ", " + age + ", " + email; 
     }
-} 
+}
 
