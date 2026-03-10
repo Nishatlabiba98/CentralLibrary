@@ -10,7 +10,7 @@ public abstract class LibraryItem  {
     public LibraryItem(int id, String title, String location){
         this.id = id;
         this.title = title;
-        this.location = location;
+        this.location = location; 
         this.isAvailable = true;
 
         
