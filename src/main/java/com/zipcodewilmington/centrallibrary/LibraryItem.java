@@ -1,6 +1,7 @@
 package com.zipcodewilmington.centrallibrary;
 
-public abstract class LibraryItem {
+public  class LibraryItem  {
+
     private String id;
     private String title;
     private String location;
@@ -8,17 +9,17 @@ public abstract class LibraryItem {
     private String isbn;
 
 //constructor
+    public LibraryItem() {
+
+    }
+
     public LibraryItem(String id, String title, String location){
         this.id = id;
         this.title = title;
         this.location = location;
-        this.isAvailable = true;
+        this.isAvailable = true;   
+    }
 
-        
-    }
-    public LibraryItem() {
-        
-    }
     public String getId() {
         return id;
     }
@@ -62,7 +63,6 @@ public abstract class LibraryItem {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    public abstract String[] getSearchableFields();
 }
 
 
