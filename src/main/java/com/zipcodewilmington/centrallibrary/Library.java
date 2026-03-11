@@ -47,4 +47,20 @@ public abstract class Library {
     public void addLibrarian(Librarian librarian) {
         librarians.add(librarian);
     }
+
+    public List<LibraryItem> search(String keyword) {
+        List<LibraryItem> results = new ArraryList<>();
+        for (LibraryItem item : items) {
+            if (item.matchesKeyword(keyword)) {
+                results.add(item);
+            }
+        }
+        return results;
+    }
+    public void displayAllItems() {
+        for (LibraryItem item : items) {
+            System.out.println(item.getItemType() + " | " + item.getTitle() + " | " + (item.isAvailable() ? "Available" : "Checked Out"));
+        }
+    }
+
 }
