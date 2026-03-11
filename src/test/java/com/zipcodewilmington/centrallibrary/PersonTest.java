@@ -16,7 +16,7 @@ public class PersonTest {
         int age = 30;
 
         // when
-        Person person = new Person (name, age, email, phoneNumber);
+        Person person = new person(name, email, phoneNumber, age);
 
         Assert.assertEquals(name, person.getName());
         Assert.assertEquals(phoneNumber, person.getPhoneNumber());
