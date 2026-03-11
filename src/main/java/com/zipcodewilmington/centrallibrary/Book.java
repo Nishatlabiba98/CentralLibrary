@@ -1,19 +1,22 @@
 package com.zipcodewilmington.centrallibrary;
 
-public abstract class Book extends LibraryItem {
-
+public   class Book extends LibraryItem {
     private String author;
     private String genre;
-    private String publicationDate;
+    private String isbn;
     private int pages;
 
-    public Book(String author, String genre, String publicationDate, int numberOfPages) {
+    
+
+    public Book(String author, String genre, String isbn, int numberOfPages) {
+       
         this.author = author;
         this.genre = genre;
-        this.publicationDate = publicationDate;
+        this.isbn = isbn;
         this.pages = numberOfPages;
         
     }
+    
 
     public String getAuthor() {
         return author;
@@ -30,12 +33,12 @@ public abstract class Book extends LibraryItem {
         this.genre = genre;
     }
 
-    public String getpublication() {
-        return publicationDate;
+    public String getIsbn() {
+        return isbn;
     }
-    
-    public void serpublicationDate(String publicationDate) {
-        this.publicationDate = publicationDate;
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public int getPages() {

@@ -1,7 +1,7 @@
 package com.zipcodewilmington.centrallibrary;
 
 
-public abstract class LibraryItem  {
+public  class LibraryItem  {
     private int id;
     private String title;
     private String location;
@@ -68,20 +68,9 @@ public abstract class LibraryItem  {
     }
 
 
-    public boolean matchesKeyword(String keyword) {
-        for (String field :  getSearchableFields()) {
-            if (field != null && field.contains(keyword)) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
 
-    public abstract double calculateLateFee(int daysLate);
-    public abstract int getMaxBorrowDays(); 
-    public abstract int getMaxBorrowDays(); //lofi
-    public abstract String getItemType();
-    public abstract String[] getSearchableFields();
+
     
 
     
