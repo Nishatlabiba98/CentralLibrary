@@ -4,16 +4,15 @@ public class Book extends LibraryItem {
     
     private String author;
     private String genre;
-    private String publicationDate;
+    private String isbn;
     private int pages;
 
-    public Book(String id, String title, String location, String author, String genre, String publicationDate, int numberOfPages) {
+    public Book(String id, String title, String location, String author, String genre, String publicationDate, String isbn, int numberOfPages) {
         super(id, title, location);
         this.author = author;
         this.genre = genre;
-        this.publicationDate = publicationDate;
+        this.isbn = isbn;
         this.pages = numberOfPages;
-        
     }
 
     public String getAuthor() {
@@ -31,12 +30,12 @@ public class Book extends LibraryItem {
         this.genre = genre;
     }
 
-    public String getpublication() {
-        return publicationDate;
+    public String getIsbn() {
+        return isbn;
     }
-    
-    public void serpublicationDate(String publicationDate) {
-        this.publicationDate = publicationDate;
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public int getPages() {
@@ -47,7 +46,6 @@ public class Book extends LibraryItem {
         
     }
 
-    @Override
     public String[] getSearchableFields() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getSearchableFields'");

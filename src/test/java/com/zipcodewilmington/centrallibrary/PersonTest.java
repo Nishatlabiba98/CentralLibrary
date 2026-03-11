@@ -19,12 +19,16 @@ public class PersonTest {
         Person person = new Person(name, age, email, phoneNumber);
 
         Assert.assertEquals(name, person.getName());
-        Assert.assertEquals(phoneNumber, person.getPhoneNumber());
-        Assert.assertEquals(email, person.getEmail());
         Assert.assertEquals(age, person.getAge());
+        Assert.assertEquals(email, person.getEmail());
+        Assert.assertEquals(phoneNumber, person.getPhoneNumber());
     }
     @Test
     public void testSetAge_negativeAge_throwsException() {
-        Person person = new Person("Joe", 30, "joeschmo@gmail.com", "123-456-7890");
+        Person person = new Person("Joe", 30, "123-456-7890", "joeschmo@gmail.com");
+
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            person.setAge(-1);
+        });
     }
 }
