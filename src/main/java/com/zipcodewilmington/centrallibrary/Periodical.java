@@ -22,22 +22,22 @@ public class Periodical extends LibraryItem {
     public String getIssueNumber() {return issueNumber;}
     public String getPublicationDate() {return publicationDate;}
 
-    @Override
+    
     public double calculateLateFee(int daysLate) {
         return daysLate * 0.25;
     }
 
-    @Override
+    
     public int getMaxBorrowDays() {
         return 7;
     }
 
-    @Override
+    
     public String getItemType() {
         return "Periodical";
     }
 
-    // Searchable
+    
     @Override
     public String[] getSearchableFields() {
         return new String[]{getTitle(), publisher, issn};

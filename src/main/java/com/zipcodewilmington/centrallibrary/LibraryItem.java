@@ -47,6 +47,7 @@ public abstract class LibraryItem  {
     }
 
     public void checkOut() {
+        if (!isAvailable) throw new IllegalStateException(title + " is already checked out.");
         this.isAvailable = false;
     }
 
@@ -63,26 +64,7 @@ public abstract class LibraryItem  {
         }
         return false;
     }
-
-    
-    
     public abstract String[] getSearchableFields();
-    
-    public double calculateLateFee(int daysLate) {
-    return daysLate * 0.25;
-    }
-
-    
-    public int getMaxBorrowDays() {
-    return 7; 
-}
-
-    public String getItemType() {
-    return "Periodical";
-}
-
-    
-
 }
 
 

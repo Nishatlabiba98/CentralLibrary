@@ -5,13 +5,13 @@ import java.util.List;
 
 public abstract class Library {
     private String name;
-    private String address;
+    private Address address;
     private List<LibraryItem> items;
     private List<LibraryMember> members;
     private List<Librarian> librarians;
     
     
-    public Library(String name, String address) {
+    public Library(String name, Address address) {
         this.name = name;
         this.address = address;
         this.items = new ArrayList<>();
@@ -19,7 +19,7 @@ public abstract class Library {
         this.librarians = new ArrayList<>();
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
     public Address getAddress() {
@@ -49,7 +49,7 @@ public abstract class Library {
     }
 
     public List<LibraryItem> search(String keyword) {
-        List<LibraryItem> results = new ArraryList<>();
+        List<LibraryItem> results = new ArrayList<>();
         for (LibraryItem item : items) {
             if (item.matchesKeyword(keyword)) {
                 results.add(item);
@@ -62,5 +62,15 @@ public abstract class Library {
             System.out.println(item.getItemType() + " | " + item.getTitle() + " | " + (item.isAvailable() ? "Available" : "Checked Out"));
         }
     }
-
+    
+    public void generateLateFeeReport() {
+        for (LibraryMember member : members) {
+            System.out.println("Member: " + member.getName());
+            for (LibraryItem item : member.getBorrowedItems()) {
+                System.out.println("  - " + item.getTitle() 
+                    + " | Max Days: " + item.getMaxBorrowDays()
+                    + " | Daily Fee: $" + item.calculateLateFee(1));
+            }
+        }
+    }
 }
