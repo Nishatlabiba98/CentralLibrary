@@ -6,6 +6,7 @@ public abstract class LibraryItem  {
     private String title;
     private String location;
     private boolean isAvailable;
+    private String isbn;
 
 //constructor
 
@@ -59,6 +60,13 @@ public abstract class LibraryItem  {
         this.isAvailable = true;
 
     } 
+    public String getIsbn() {
+        return isbn;
+    }
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
 
     public boolean matchesKeyword(String keyword) {
         for (String field :  getSearchableFields()) {
