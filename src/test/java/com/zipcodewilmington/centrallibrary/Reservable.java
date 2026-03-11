@@ -1,4 +1,4 @@
-package library;
+package com.zipcodewilmington.centrallibrary;
 
 class LibraryMember {
 
