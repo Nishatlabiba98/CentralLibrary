@@ -13,10 +13,10 @@ public abstract class LibraryItem  {
         this.location = location; 
         this.isAvailable = true;
 
-        
+
     }
     public LibraryItem(String id2, String title2, String location2) {
-        
+
     }
     public int getId() {
         return id;
@@ -64,24 +64,18 @@ public abstract class LibraryItem  {
         return false;
     }
 
-    
-    
+
+
     public abstract String[] getSearchableFields();
-    
+
     public double calculateLateFee(int daysLate) {
     return daysLate * 0.25;
     }
 
-    
-    public int getMaxBorrowDays() {
-    return 7; 
-}
 
     public String getItemType() {
     return "Periodical";
 }
-
-    
 
 }
 
