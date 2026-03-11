@@ -1,13 +1,13 @@
 package com.zipcodewilmington.centrallibrary;
 
-public class person {
+public class Person {
     private String name;
     private String email;
     private String phoneNumber;
     private int age;
     //constructor initialized variable instances that belong to the person class
 
-    public person(String name, String email, String phoneNumber, int age) {
+    public Person(String name, int age, String phoneNumber, String email) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -42,5 +42,9 @@ public class person {
 @Override
     public String toString() {
         return "person{" +  "name='" + name + '\'' + ", email='" + email + '\'' +  ", phoneNumber='" + phoneNumber + '\'' + ", age=" + age +'}';
+    }
+
+    void setAge(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
