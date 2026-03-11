@@ -41,7 +41,7 @@ public class Person {
 }
 @Override
     public String toString() {
-        return "person{" +  "name='" + name + '\'' + ", email='" + email + '\'' +  ", phoneNumber='" + phoneNumber + '\'' + ", age=" + age +'}';
+        return "person" +  "name='" + name + '\'' + ", email='" + email + '\'' +  ", phoneNumber='" + phoneNumber + '\'' + ", age=" + age +'}';
     }
 
     void setAge(int i) {
