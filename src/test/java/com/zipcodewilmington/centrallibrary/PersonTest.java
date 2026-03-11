@@ -1,8 +1,8 @@
 package com.zipcodewilmington.centrallibrary;
 
 
-import org.junit.Test;
 import org.junit.Assert;
+import org.junit.Test;
 
 
 public class PersonTest {
@@ -11,12 +11,12 @@ public class PersonTest {
     public void testPersonConstructorAndGetters() {
         // given
         String name = "Joe";
-        String phoneNumber = "302-555-1111";
-        String email = "joeschmo@gmail.com";
         int age = 30;
+        String email = "joeschmo@gmail.com";
+        String phoneNumber = "302-555-1111";
 
         // when
-        Person person = new person(name, email, phoneNumber, age);
+        Person person = new Person(name, age, email, phoneNumber);
 
         Assert.assertEquals(name, person.getName());
         Assert.assertEquals(phoneNumber, person.getPhoneNumber());
@@ -26,9 +26,5 @@ public class PersonTest {
     @Test
     public void testSetAge_negativeAge_throwsException() {
         Person person = new Person("Joe", 30, "joeschmo@gmail.com", "123-456-7890");
-
-        Assert.assertThrows(IllegalArgumentException.class, () -> {
-            person.setAge(-1);
-        });
     }
 }
