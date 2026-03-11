@@ -40,6 +40,6 @@ public class Periodical extends LibraryItem {
     
     @Override
     public String[] getSearchableFields() {
-        return new String[]{getTitle(), publisher, issn};
+        return new String[]{getTitle(), publisher, issn, volume, publicationDate};
     }
 }
