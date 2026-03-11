@@ -1,37 +1,50 @@
-
 package com.zipcodewilmington.centrallibrary;
 
-public final class Person {
+public class Person {
     private String name;
+    private String email;
     private String phoneNumber;
     private int age;
-    private String email;
+    //constructor initialized variable instances that belong to the person class
 
-    public Person(String name, int age, String email, String phoneNumber) {
+    public Person(String name, int age, String phoneNumber, String email) {
         this.name = name;
+        this.email = email;
         this.phoneNumber = phoneNumber;
-        setAge(age);
+        this.age = age;
+    }
+    //getters and setters for the person class
+    public String getName() {
+        return name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getName() {return name; }
-    
-    public String getPhoneNumber() {return phoneNumber; }
-    public int getAge() {return age; }
-    public String getEmail() {return email;}
-
-    public void setName(String name) {this.name = name; }
-
-    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber; }
-    public void setAge(int age) {
-        if (age < 0) throw new IllegalArgumentException("Age cannot be negative.");
-        this.age = age; 
-    }
-    public void setEmail(String email) {this.email = email; }
-
-    @Override
+    public void setPhoneNumber(String phoneNumber) {
+        if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
+            throw new IllegalArgumentException("Phone number cannot be null or empty");
+        }
+        this.phoneNumber = phoneNumber;
+}
+@Override
     public String toString() {
-        return name + ", " + phoneNumber + ", " + age + ", " + email; 
+        return "person{" +  "name='" + name + '\'' + ", email='" + email + '\'' +  ", phoneNumber='" + phoneNumber + '\'' + ", age=" + age +'}';
+    }
+
+    void setAge(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
-

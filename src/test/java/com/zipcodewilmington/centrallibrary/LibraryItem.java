@@ -24,6 +24,9 @@ public  class LibraryItem  {
        //getters and setters 
         
     }
+    public LibraryItem(String id2, String title2, String location2) {
+        
+    }
     public int getId() {
         return id;
     }
@@ -67,11 +70,29 @@ public  class LibraryItem  {
         this.isbn = isbn;
     }
 
+<<<<<<< HEAD:src/main/java/com/zipcodewilmington/centrallibrary/LibraryItem.java
 
     
 
 
+=======
     
+    
+    public abstract String[] getSearchableFields();
+>>>>>>> master:src/test/java/com/zipcodewilmington/centrallibrary/LibraryItem.java
+    
+    public double calculateLateFee(int daysLate) {
+    return daysLate * 0.25;
+    }
+
+    
+    public int getMaxBorrowDays() {
+    return 7; 
+}
+
+    public String getItemType() {
+    return "Periodical";
+}
 
     
 
