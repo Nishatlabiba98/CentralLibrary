@@ -6,19 +6,23 @@ public abstract class LibraryItem implements Searchable {
     private String location;
     private boolean isAvailable;
     private String isbn;
+    
 
 //constructor
+    public LibraryItem() {
+
+    }
+
     public LibraryItem(String id, String title, String location){
         this.id = id;
         this.title = title;
         this.location = location;
         this.isAvailable = true;
+          
+    }
 
-        
-    }
-    public LibraryItem() {
-        
-    }
+    
+
     public String getId() {
         return id;
     }
@@ -50,6 +54,7 @@ public abstract class LibraryItem implements Searchable {
     public void checkOut() {
         if (!isAvailable) throw new IllegalStateException(title + " is already checked out.");
         this.isAvailable = false;
+        
     }
 
     public void checkIn() {
