@@ -5,7 +5,8 @@ public class Movie extends LibraryItem {
     private String duration;
     private String rating;
     private String genre; 
-    public Movie(String  id, String title, String location, String director, String duration, String rating, String genre) {
+
+public Movie(String  id, String title, String location, String director,     String duration, String rating, String genre) {
         super(id, title, location);
         this.director = director;
         this.duration = duration;
@@ -41,16 +42,16 @@ public class Movie extends LibraryItem {
         this.genre = genre;
     }
 
-    
+    @Override
     public double calculateLateFee(int daysLate) {
         return daysLate * 1.00;
     }
 
-    
+    @Override
     public int getMaxBorrowDays() {
         return 7;
     }
-
+    @Override
     public String getItemType() {
         return "Movie";
     }
