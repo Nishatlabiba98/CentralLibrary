@@ -13,6 +13,10 @@ public class Person {
         this.phoneNumber = phoneNumber;
         this.age = age;
     }
+
+    public Person() {
+        
+    }
     //getters and setters for the person class
     public String getName() {
         return name;
