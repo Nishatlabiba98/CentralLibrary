@@ -18,7 +18,7 @@ public abstract class LibraryItem implements Searchable {
         this.title = title;
         this.location = location;
         this.isAvailable = true;
-          
+        
     }
 
     
