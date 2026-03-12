@@ -3,7 +3,7 @@ package com.zipcodewilmington.centrallibrary;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Library {
+public class Library {
     private String name;
     private Address address;
     private List<LibraryItem> items;

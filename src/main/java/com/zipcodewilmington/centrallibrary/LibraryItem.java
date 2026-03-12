@@ -62,9 +62,11 @@ public abstract class LibraryItem implements Searchable {
 
     } 
     
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
+    public abstract double calculateLateFee(int daysLate);
+
+    public abstract int getMaxBorrowDays();
+
+    public abstract String getItemType();
 
     @Override
     public boolean matchesKeyword(String keyword) {
