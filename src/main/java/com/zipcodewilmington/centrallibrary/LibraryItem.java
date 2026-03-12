@@ -1,24 +1,29 @@
 package com.zipcodewilmington.centrallibrary;
 
-public abstract class LibraryItem {
+public  class LibraryItem  {
+
     private String id;
     private String title;
     private String location;
     private boolean isAvailable;
     private String isbn;
+    
 
 //constructor
+    public LibraryItem() {
+
+    }
+
     public LibraryItem(String id, String title, String location){
         this.id = id;
         this.title = title;
         this.location = location;
         this.isAvailable = true;
+          
+    }
 
-        
-    }
-    public LibraryItem() {
-        
-    }
+    
+
     public String getId() {
         return id;
     }
@@ -50,6 +55,7 @@ public abstract class LibraryItem {
     public void checkOut() {
         if (!isAvailable) throw new IllegalStateException(title + " is already checked out.");
         this.isAvailable = false;
+        
     }
 
     public void checkIn() {
@@ -62,7 +68,16 @@ public abstract class LibraryItem {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    public abstract String[] getSearchableFields();
+
+    
+    public boolean matchesKeyword(String keyword) {
+    for (String field : getSearchableFields()) {
+        if (field != null && field.toLowerCase().contains(keyword.toLowerCase())) {
+            return true;
+        }
+    }
+    return false;
+    }
 }
 
 

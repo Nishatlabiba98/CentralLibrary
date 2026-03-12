@@ -3,16 +3,15 @@ package com.zipcodewilmington.centrallibrary;
 public class Book extends LibraryItem {
     
     private String author;
-    private String genre;
-    private String isbn;
+    private String genre; // move this also remove the getter and setter of isbn
     private int pages;
 
     public Book(String id, String title, String location, String author, String genre, String publicationDate, String isbn, int numberOfPages) {
         super(id, title, location);
         this.author = author;
         this.genre = genre;
-        this.isbn = isbn;
         this.pages = numberOfPages;
+        //implement searchable fields
     }
 
     public String getAuthor() {
@@ -28,14 +27,6 @@ public class Book extends LibraryItem {
     }
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
     }
 
     public int getPages() {
