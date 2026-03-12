@@ -41,6 +41,10 @@ public class Movie extends LibraryItem {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+    public String[] getSearchableFields() {
+        return new String[]{getTitle(), director, genre, rating};
+    }
     // add in the rating 
     
 }
