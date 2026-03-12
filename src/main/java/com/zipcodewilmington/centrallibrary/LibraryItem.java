@@ -1,7 +1,6 @@
 package com.zipcodewilmington.centrallibrary;
 
-public  class LibraryItem  {
-
+public abstract class LibraryItem implements Searchable {
     private String id;
     private String title;
     private String location;
@@ -19,7 +18,7 @@ public  class LibraryItem  {
         this.title = title;
         this.location = location;
         this.isAvailable = true;
-          
+        
     }
 
     
@@ -62,14 +61,14 @@ public  class LibraryItem  {
         this.isAvailable = true;
 
     } 
-    public String getIsbn() {
-        return isbn;
-    }
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
     
+    public abstract double calculateLateFee(int daysLate);
+
+    public abstract int getMaxBorrowDays();
+
+    public abstract String getItemType();
+
+    @Override
     public boolean matchesKeyword(String keyword) {
     for (String field : getSearchableFields()) {
         if (field != null && field.toLowerCase().contains(keyword.toLowerCase())) {
@@ -79,5 +78,3 @@ public  class LibraryItem  {
     return false;
     }
 }
-
-

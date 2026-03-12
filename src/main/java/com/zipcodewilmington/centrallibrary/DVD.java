@@ -1,45 +1,38 @@
 package com.zipcodewilmington.centrallibrary;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-
-// Base class (superclass) DVD
 public abstract class DVD extends LibraryItem implements Reservable {
-    private String Title;
-    private String Director;
-    private String Duration;
-    private String Rating;
-    private String Genre;
-    private boolean Borrowed;
+    private String director;
+    private String duration;
+    private String rating;
+    private String genre;
+    private boolean isReserved;
+    
 
-    public String getTitle() {
-        return Title;
-}
+    public DVD(String id, String title, String location, String director, String duration, String rating, String genre) {
+        super(id, title, location);
+        this.director = director;
+        this.duration = duration;
+        this.rating = rating;
+        this.genre = genre;
+    }
+    
 
     public String getDirector() {
-    return Director;
+    return director;
     }
 
     public String getGenre() {
-    return Genre;
+    return genre;
     }
 
-public String getRating() {
-    return Rating;
-}
-
-    public interface Reserveable {
-    void reserve(String user);
-    boolean isReserved();
-}
+    public String getRating() {
+    return rating;
+    }
 
 
     public String getType() {
     return "DVD";
-}
+    }
 
 
     public int getBorrowedDays() {
@@ -51,4 +44,8 @@ public String getRating() {
     return 1.00;
     }   
 
+    @Override
+    public String[] getSearchableFields() { 
+        return new String[]{getTitle(), director, duration, rating, genre};
+    }
 }

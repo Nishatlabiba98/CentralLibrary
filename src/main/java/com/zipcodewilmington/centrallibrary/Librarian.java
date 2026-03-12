@@ -1,9 +1,5 @@
 package com.zipcodewilmington.centrallibrary;
 
-import com.zipcodewilmington.centrallibrary.Library;
-import com.zipcodewilmington.centrallibrary.LibraryItem;
-import com.zipcodewilmington.centrallibrary.Person;
-
 public class Librarian extends Person {
     private String employeeId;
     private String department;

@@ -1,13 +1,6 @@
 package com.zipcodewilmington.centrallibrary;
 
 public class DVDTest {
-}
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-
 // Base class (superclass) DVD
 public abstract class DVD extends LibraryItem implements Reservable {
     private String Title;
@@ -52,3 +45,6 @@ public String getRating() {
     public double getLateFeePerDay() {
     return 1.00;
     }   
+
+}
+}

@@ -22,17 +22,17 @@ public class Periodical extends LibraryItem {
     public String getIssueNumber() {return issueNumber;}
     public String getPublicationDate() {return publicationDate;}
 
-    
+    @Override
     public double calculateLateFee(int daysLate) {
         return daysLate * 0.25;
     }
 
-    
+    @Override
     public int getMaxBorrowDays() {
         return 7;
     }
 
-    
+    @Override
     public String getItemType() {
         return "Periodical";
     }
@@ -40,6 +40,6 @@ public class Periodical extends LibraryItem {
     
     @Override
     public String[] getSearchableFields() {
-        return new String[]{getTitle(), publisher, issn};
+        return new String[]{getTitle(), publisher, issn, volume, publicationDate};
     }
 }

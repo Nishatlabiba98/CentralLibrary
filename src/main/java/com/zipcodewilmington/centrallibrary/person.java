@@ -13,6 +13,10 @@ public class Person {
         this.phoneNumber = phoneNumber;
         this.age = age;
     }
+
+    public Person() {
+        
+    }
     //getters and setters for the person class
     public String getName() {
         return name;
@@ -41,7 +45,7 @@ public class Person {
 }
 @Override
     public String toString() {
-        return "person{" +  "name='" + name + '\'' + ", email='" + email + '\'' +  ", phoneNumber='" + phoneNumber + '\'' + ", age=" + age +'}';
+        return "person" +  "name='" + name + '\'' + ", email='" + email + '\'' +  ", phoneNumber='" + phoneNumber + '\'' + ", age=" + age +'}';
     }
 
 
