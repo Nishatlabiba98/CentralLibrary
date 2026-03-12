@@ -31,17 +31,17 @@ public class Music extends LibraryItem {
     public String getPublicationDate() {
         return publicationDate;
     }
-
+    @Override
     public double calculateLateFee(int daysLate) {
         return daysLate * 1.00;
     }
 
-    
+    @Override
     public int getMaxBorrowDays() {
         return 7;
     }
 
-    
+    @Override
     public String getItemType() {
         return "Music";
     }
