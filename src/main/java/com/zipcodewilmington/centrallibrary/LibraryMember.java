@@ -1,7 +1,7 @@
 package com.zipcodewilmington.centrallibrary;
 import java.util.ArrayList;
 import java.util.List;
- 
+
 public class LibraryMember extends Person{
     private String memberId;
     private double outstandingFees;

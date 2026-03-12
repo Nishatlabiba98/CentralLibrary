@@ -12,7 +12,6 @@ public class Movie extends LibraryItem {
         this.rating = rating;
         this.genre = genre;
 
-       
     }
     public String getDirector() {
         return director;
