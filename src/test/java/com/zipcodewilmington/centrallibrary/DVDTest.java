@@ -52,3 +52,4 @@ public String getRating() {
     public double getLateFeePerDay() {
     return 1.00;
     }   
+}
