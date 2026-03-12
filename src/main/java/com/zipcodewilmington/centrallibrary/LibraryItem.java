@@ -7,6 +7,7 @@ public  class LibraryItem  {
     private String location;
     private boolean isAvailable;
     private String isbn;
+    
 
 //constructor
     public LibraryItem() {
@@ -17,8 +18,11 @@ public  class LibraryItem  {
         this.id = id;
         this.title = title;
         this.location = location;
-        this.isAvailable = true;   
+        this.isAvailable = true;
+          
     }
+
+    
 
     public String getId() {
         return id;
@@ -51,6 +55,7 @@ public  class LibraryItem  {
     public void checkOut() {
         if (!isAvailable) throw new IllegalStateException(title + " is already checked out.");
         this.isAvailable = false;
+        
     }
 
     public void checkIn() {
@@ -62,6 +67,16 @@ public  class LibraryItem  {
     }
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    
+    public boolean matchesKeyword(String keyword) {
+    for (String field : getSearchableFields()) {
+        if (field != null && field.toLowerCase().contains(keyword.toLowerCase())) {
+            return true;
+        }
+    }
+    return false;
     }
 }
 
