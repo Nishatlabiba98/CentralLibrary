@@ -1,44 +1,32 @@
 package com.zipcodewilmington.centrallibrary;
 
-public class Address {
-    //Instance vairables
+
+public class Address{
     private String street;
     private String city;
     private String state;
-    private String zipCode;
-    
-    //Defalut Setting
-    public Address() {
-        this.street = "";
-        this.city = "";
-        this.state = "";
-        this.zipCode = "";
-    }
+    private String zipcode;
 
-    //Parameterized Constructor
-    public Address(String street, String city, String state, String zipCode) {
+    public Address(String street, String city, String state, String zipcode) {
         this.street = street;
         this.city = city;
         this.state = state;
-        this.zipCode = zipCode;
+        this.zipcode = zipcode;
     }
 
-    //Getter
-    public String gitStreet() {
-        return street;
+    public String getStreet() {return street; }
+    public String getCity() {return city; }
+    public String getState() {return state; }
+    public String getZipcode() {return zipcode; }
+
+    public void setStreet(String street) {this.street = street; }
+    public void setCity(String city) {this.city = city; }
+    public void setState(String state) {this.state = state; }
+    public void setZipcode(String zipCode) {this.zipcode = zipCode; }
+
+    @Override
+    public String toString() {
+        return street + ", " + city + ", " + state + ", " + zipcode; 
     }
-    public String gitCity() {
-        return city;
-    }
-    public String gitState() {
-        return state;
-    }
-    public String gitZipcode() {
-        return zipCode;
-    }
-    //Override for cleaner view
-    public String AddressString() {
-        return street + ", " + city + ", " + state + ", " + zipCode;
-    }
-} 
+}
 

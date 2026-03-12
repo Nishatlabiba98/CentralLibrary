@@ -1,10 +1,12 @@
 package com.zipcodewilmington.centrallibrary;
 
+
+
 public class BookTest {
 
 public static void main(String[] args) {
 
-    Book book = new Book("1", "The Great Gatsby", "Aisle 3", "F. Scott Fitzgerald", "Classic", "1925", "978-0743273565", 180); 
+    Book book = new Book("A100", "The Great Gatsby", "Aisle 3", "John Smith", "Horror", "2/2/22", "293849595934", 9); 
 
     System.out.println(book.getAuthor());
     System.out.println(book.getGenre());
