@@ -9,7 +9,7 @@ public class LibraryMember extends Person{
     private List<LibraryItem> borrowedItems;
     private Address address;
     
-    public LibraryMember(String name, int age, String email, String phoneNumber, String memberId, Address address) {
+    public LibraryMember(String name, int age, String email, String phoneNumber, String memberId, Address address, String membershipDate) {
         super(name, age, email, phoneNumber);
         setMemberId(memberId);
         this.membershipDate = membershipDate;
