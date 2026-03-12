@@ -1,19 +1,32 @@
 package com.zipcodewilmington.centrallibrary;
 
-public abstract class LibraryItem  {
+
+public  class LibraryItem  {
     private int id;
     private String title;
     private String location;
     private boolean isAvailable;
+    private String isbn;
 
 //constructor
+
+
+    public LibraryItem() {
+
+    }
+
     public LibraryItem(int id, String title, String location){
         this.id = id;
         this.title = title;
-        this.location = location; 
+        this.location = location;
         this.isAvailable = true;
 
-        
+
+       //getters and setters 
+
+    }
+    public LibraryItem(String id2, String title2, String location2) {
+
     }
     public int getId() {
         return id;
@@ -51,23 +64,16 @@ public abstract class LibraryItem  {
         this.isAvailable = true;
 
     } 
-
-    public boolean matchesKeyword(String keyword) {
-        for (String field :  getSearchableFields()) {
-            if (field != null && field.contains(keyword)) {
-                return true;
-            }
-        }
-        return false;
+    public String getIsbn() {
+        return isbn;
+    }
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
-    public abstract double calculateLateFee(int daysLate);
-    public abstract int getMaxBorrowDays(); //lofi
-    public abstract String getItemType();
-    public abstract String[] getSearchableFields();
-    
-
-    
+    public double calculateLateFee(int daysLate) {
+    return daysLate * 0.25;
+    }
 
 }
 

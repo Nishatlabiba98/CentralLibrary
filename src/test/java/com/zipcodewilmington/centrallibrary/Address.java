@@ -20,10 +20,10 @@ public class Address{
     public String getState() {return state; }
     public String getZipcode() {return zipcode; }
 
-    public void SetStreet(String street) {this.street = state; }
-    public void SetCity(String city) {this.city = city; }
-    public void SetState(String state) {this.state = state; }
-    public void SetZipcode(String zipCode) {this.zipcode = zipCode; }
+    public void setStreet(String street) {this.street = street; }
+    public void setCity(String city) {this.city = city; }
+    public void setState(String state) {this.state = state; }
+    public void setZipcode(String zipCode) {this.zipcode = zipCode; }
 
     @Override
     public String toString() {
