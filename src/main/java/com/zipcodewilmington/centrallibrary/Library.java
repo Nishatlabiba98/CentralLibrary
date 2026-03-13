@@ -9,6 +9,7 @@ public class Library {
     private List<LibraryItem> items;
     private List<LibraryMember> members;
     private List<Librarian> librarians;
+    private List<Borrowed> borrowedRecords;
     
     
     public Library(String name, Address address) {
@@ -17,6 +18,7 @@ public class Library {
         this.items = new ArrayList<>();
         this.members = new ArrayList<>();
         this.librarians = new ArrayList<>();
+        this.borrowedRecords = new ArrayList<>();
     }
 
     public String getName() {
@@ -62,6 +64,8 @@ public class Library {
             System.out.println(item.getItemType() + " | " + item.getTitle() + " | " + (item.isAvailable() ? "Available" : "Checked Out"));
         }
     }
+
+    
     
     public void generateLateFeeReport() {
         for (LibraryMember member : members) {
