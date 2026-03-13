@@ -3,7 +3,7 @@ package com.zipcodewilmington.centrallibrary;
 public class Book extends LibraryItem {
     
     private String author;
-    private String genre; // move this also remove the getter and setter of isbn
+    private String genre; 
     private int pages;
 
     public Book(String id, String title, String location, String author, String genre, String publicationDate, String isbn, int numberOfPages) {
@@ -11,7 +11,7 @@ public class Book extends LibraryItem {
         this.author = author;
         this.genre = genre;
         this.pages = numberOfPages;
-        //implement searchable fields
+        
     }
 
     public String getAuthor() {
