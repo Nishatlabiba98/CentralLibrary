@@ -53,7 +53,7 @@ public class Music extends LibraryItem implements Reservable {
 
     @Override
     public String[] getSearchableFields() {
-        return new String[]{getTitle(), artist, album, genre, publicationDate};
+        return new String[]{getTitle(), artist, album, genre, publicationDate, language};
     }
     @Override
     public void reserve(LibraryMember member) {
