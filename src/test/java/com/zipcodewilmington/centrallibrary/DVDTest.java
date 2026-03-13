@@ -3,7 +3,6 @@ package com.zipcodewilmington.centrallibrary;
 public class DVDTest {
 
 
-
 // Base class (superclass) DVD
 public abstract class DVD extends LibraryItem implements Reservable {
     private String Title;
@@ -47,6 +46,12 @@ public String getRating() {
 
     public double getLateFeePerDay() {
     return 1.00;
+
     }  
 } 
-}
+
+    }   
+
+
+
+

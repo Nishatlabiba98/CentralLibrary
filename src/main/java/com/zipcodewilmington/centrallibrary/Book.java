@@ -36,10 +36,22 @@ public class Book extends LibraryItem {
         this.pages = pages;
         
     }
+    @Override
+    public double calculateLateFee(int daysLate) {
+        return daysLate * 0.50;
+    }
+
+    @Override
+    public int getMaxBorrowDays() {
+        return 14;
+    }
+    @Override
+    public String getItemType() {
+        return "Book";
+    }
 
     public String[] getSearchableFields() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSearchableFields'");
+        return new String[]{getTitle(), author, genre};
     }
 }
 

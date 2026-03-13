@@ -1,7 +1,7 @@
 package com.zipcodewilmington.centrallibrary;
 import java.util.ArrayList;
 import java.util.List;
- 
+
 public class LibraryMember extends Person{
     private String memberId;
     private double outstandingFees;
@@ -9,7 +9,7 @@ public class LibraryMember extends Person{
     private List<LibraryItem> borrowedItems;
     private Address address;
     
-    public LibraryMember(String name, int age, String email, String phoneNumber, String memberId, Address address) {
+    public LibraryMember(String name, int age, String email, String phoneNumber, String memberId, Address address, String membershipDate) {
         super(name, age, email, phoneNumber);
         setMemberId(memberId);
         this.membershipDate = membershipDate;
