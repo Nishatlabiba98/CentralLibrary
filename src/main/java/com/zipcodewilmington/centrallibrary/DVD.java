@@ -57,10 +57,20 @@ public abstract class DVD extends LibraryItem implements Reservable {
     public String[] getSearchableFields() { 
         return new String[]{getTitle(), director, genre};
     }
-}
-
     @Override
     public void reserve(LibraryMember member) {
-        if (isReserved) throw new IllegalStateException(getTitle() + " is already reserved.")
-            
+        if (isReserved) throw new IllegalStateException(getTitle() + " is already reserved.");
+        isReserved = true;
+        reservedBy = member;
     }
+    
+    @Override
+    public void cancelReserve(LibraryMember member) {
+    isReserved = false;
+    reservedBy = null;
+    }
+    
+    @Override
+    public boolean isReserved() { return isReserved; }
+}
+
