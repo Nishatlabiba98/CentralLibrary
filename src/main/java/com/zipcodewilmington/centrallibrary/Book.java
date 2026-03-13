@@ -50,6 +50,7 @@ public class Book extends LibraryItem {
         return "Book";
     }
 
+    @Override
     public String[] getSearchableFields() {
         return new String[]{getTitle(), author, genre};
     }

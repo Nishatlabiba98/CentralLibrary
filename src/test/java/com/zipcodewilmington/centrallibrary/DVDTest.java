@@ -3,27 +3,27 @@ package com.zipcodewilmington.centrallibrary;
 public class DVDTest {
 // Base class (superclass) DVD
 public abstract class DVD extends LibraryItem implements Reservable {
-    private String Title;
-    private String Director;
-    private String Duration;
-    private String Rating;
-    private String Genre;
-    private boolean Borrowed;
+    private String title;
+    private String director;
+    private String duration;
+    private String rating;
+    private String genre;
+    private boolean borrowed;
 
     public String getTitle() {
-        return Title;
+        return title;
 }
 
     public String getDirector() {
-    return Director;
+    return director;
     }
 
     public String getGenre() {
-    return Genre;
+    return genre;
     }
 
 public String getRating() {
-    return Rating;
+    return rating;
 }
 
     public interface Reserveable {
@@ -44,7 +44,11 @@ public String getRating() {
 
     public double getLateFeePerDay() {
     return 1.00;
-    }   
-
+    }
+    
+    public String[] getSearchableFields() { 
+        return new String[]{getTitle(), director, genre};
+    }
 }
+
 }
