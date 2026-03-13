@@ -5,7 +5,7 @@ public abstract class LibraryItem implements Searchable {
     private String title;
     private String location;
     private boolean isAvailable;
-    private String isbn;
+    
     
 
 //constructor
