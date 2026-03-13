@@ -1,6 +1,6 @@
 package com.zipcodewilmington.centrallibrary;
 
-public abstract class DVD extends LibraryItem implements Reservable {
+public class DVD extends LibraryItem implements Reservable {
     private String director;
     private String duration;
     private String rating;
@@ -39,7 +39,9 @@ public abstract class DVD extends LibraryItem implements Reservable {
     }
     public void setGenre(String genre) { this.genre = genre;}
 
-    
+    public LibraryMember getReservedBy()
+    { return reservedBy; }
+
     @Override
     public int getMaxBorrowDays() {
     return 7;
