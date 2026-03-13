@@ -65,16 +65,46 @@ public class Library {
         }
     }
 
-    
-    
+    public void borrowItem(LibraryMember member, LibraryItem item) {
+        if (!item.isAvailable()) {
+            System.out.println(item.getTitle() + " is not available.");
+            return;
+        }
+        member.borrowItem(item);
+        borrowedRecords.add(new Borrowed(member, item));
+        System.out.println(member.getName() + " borrowed " + item.getTitle());
+    }
+
+
+    public void returnItem(LibraryMember member, LibraryItem item) {
+        Borrowed record = null;
+        for (Borrowed b : borrowedRecords) {
+            if (b.getMember().equals(member) && b.getItem().equals(item)) {
+                record = b;
+                break;
+            }
+        }
+        if (record == null) {
+            System.out.println("No borrow record found.");
+            return;
+        }
+        member.returnItem(item, record.getDaysLate());
+        borrowedRecords.remove(record);
+        System.out.println(member.getName() + " returned " + item.getTitle()
+            + " | Late Fee: $" + record.calculateLateFee());
+    }
+
     public void generateLateFeeReport() {
-        for (LibraryMember member : members) {
-            System.out.println("Member: " + member.getName());
-            for (LibraryItem item : member.getBorrowedItems()) {
-                System.out.println("  - " + item.getTitle() 
-                    + " | Max Days: " + item.getMaxBorrowDays()
-                    + " | Daily Fee: $" + item.calculateLateFee(1));
+        System.out.println("=== Late Fee Report ===");
+        for (Borrowed b : borrowedRecords) {
+            if (b.isOverdue()) {
+                System.out.println(b.toString());
             }
         }
     }
+    public List<Borrowed> getBorrowedRecords() { return borrowedRecords; }
 }
+
+    
+
+

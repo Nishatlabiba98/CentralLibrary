@@ -17,14 +17,15 @@ public void start() {
             System.out.println("\n==== MAIN MENU ====");
             System.out.println("1. Search Books");
             System.out.println("2. Search Periodicals");
-            System.out.println("3. Search Movies");
-            System.out.println("4. Search Music");
-            System.out.println("5. Display All Items");
-            System.out.println("6. Borrow an Item");
-            System.out.println("7. Return an Item");
-            System.out.println("8. Pay Fees");
-            System.out.println("9. Generate Late Fee Report");
-            System.out.println("10. Exit");
+            System.out.println("3. Search DVDs");
+            System.out.println("4. Search Movies");
+            System.out.println("5. Search Music");
+            System.out.println("6. Display All Items");
+            System.out.println("7. Borrow an Item");
+            System.out.println("8. Return an Item");
+            System.out.println("9. Pay Fees");
+            System.out.println("10. Generate Late Fee Report");
+            System.out.println("11. Exit");
             System.out.println("Choose an option:");
 
             String choice = scanner.nextLine();
@@ -37,27 +38,30 @@ public void start() {
                     searchByType("Periodical");
                     break;
                 case "3":
-                    searchByType("Movie");
+                    searchByType("DVD");
                     break;
                 case "4":
-                    searchByType("Music");
+                    searchByType("Movie");
                     break;
                 case "5":
-                    library.displayAllItems();
+                    searchByType("Music");
                     break;
                 case "6":
-                    borrowItem();
+                    library.displayAllItems();
                     break;
                 case "7":
-                    returnItem();
+                    borrowItem();
                     break;
                 case "8":
-                    payFees();
+                    returnItem();
                     break;
                 case "9":
-                    library.generateLateFeeReport();
+                    payFees();
                     break;
                 case "10":
+                    library.generateLateFeeReport();
+                    break;
+                case "11":
                     System.out.println("bye bye");
                     running = false;
                     break;
