@@ -1,12 +1,4 @@
 package com.zipcodewilmington.centrallibrary;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-
-// Base class (superclass) DVD
 public abstract class DVD extends LibraryItem implements Reservable {
     private String Title;
     private String Director;
@@ -14,7 +6,7 @@ public abstract class DVD extends LibraryItem implements Reservable {
     private String Rating;
     private String Genre;
     private boolean Borrowed;
-
+    
     public String getTitle() {
         return Title;
 }
