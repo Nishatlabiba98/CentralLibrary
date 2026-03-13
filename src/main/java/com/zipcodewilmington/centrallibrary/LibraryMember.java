@@ -50,7 +50,7 @@ public class LibraryMember extends Person{
     public void borrowItem(LibraryItem item) {
         if (!item.isAvailable())
             throw new IllegalStateException(item.getTitle() + " is not available.");
-            item.checkOut();
+                item.checkOut();
             borrowedItems.add(item);
             System.out.println(getName() + " borrowed: " + item.getTitle());
     }

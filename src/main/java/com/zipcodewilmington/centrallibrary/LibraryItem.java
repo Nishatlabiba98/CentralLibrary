@@ -5,7 +5,7 @@ public abstract class LibraryItem implements Searchable {
     private String title;
     private String location;
     private boolean isAvailable;
-    private String isbn;
+    
     
 
 //constructor
@@ -67,6 +67,8 @@ public abstract class LibraryItem implements Searchable {
     public abstract int getMaxBorrowDays();
 
     public abstract String getItemType();
+    
+    public abstract String[] getSearchableFields();
 
     @Override
     public boolean matchesKeyword(String keyword) {
