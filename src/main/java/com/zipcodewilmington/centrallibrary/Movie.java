@@ -6,7 +6,7 @@ public class Movie extends LibraryItem {
     private String rating;
     private String genre; 
 
-public Movie(String  id, String title, String location, String director,     String duration, String rating, String genre) {
+public Movie(String  id, String title, String location, String director, String duration, String rating, String genre) {
         super(id, title, location);
         this.director = director;
         this.duration = duration;

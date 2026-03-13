@@ -73,6 +73,8 @@ public class DVD extends LibraryItem implements Reservable {
     }
     
     @Override
-    public boolean isReserved() { return isReserved; }
+    public boolean isReserved() {
+        return isReserved; 
+    }
 }
 
