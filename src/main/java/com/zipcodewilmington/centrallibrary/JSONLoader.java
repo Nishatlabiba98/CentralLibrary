@@ -34,10 +34,10 @@ public class JSONLoader {
                 node.get("title").asText(),
                 node.get("location").asText(),
                 node.get("author").asText(),
-                node.get("genre").asText(),
-                node.get("publicationDate").asText(),
                 node.get("isbn").asText(),
-                node.get("pages").asString()
+                node.get("pages").asString(),
+                node.get("genre").asText(),
+                node.get("publicationDate").asText()
             ));
         }
         return books;

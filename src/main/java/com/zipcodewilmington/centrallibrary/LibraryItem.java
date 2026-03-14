@@ -13,9 +13,7 @@ public abstract class LibraryItem implements Searchable {
         this.isAvailable = true;
         
     }
-
     
-
     public String getId() {
         return id;
     }

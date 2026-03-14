@@ -120,19 +120,15 @@ public void start() {
         System.out.println("Enter item ID:");
         String itemId = scanner.nextLine();
         
-        LibraryMember member = library.getMembers().stream()
-            .filter(m -> m.getMemberId().equals(memberId))
-            .findFirst().orElse(null);
-        LibraryItem item = library.getItems().stream()
-            .filter(i -> i.getId().equals(itemId))
-            .findFirst().orElse(null);
+        LibraryMember member = findMember(memberId);
+        LibraryItem item = findItem(itemId);
 
         if (member == null) {
-            System.err.println("Member not found.");
+            System.out.println("Member not found.");
             return;
         }
         if (item == null) {
-            System.err.println("Item not found.");
+            System.out.println("Item not found.");
             return;
         }
     

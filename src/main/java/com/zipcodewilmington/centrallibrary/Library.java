@@ -50,7 +50,7 @@ public class Library {
         librarians.add(librarian);
     }
 
-    public List<LibraryMember> searchMembers(String     keyword) {
+    public List<LibraryMember> searchMembers(String keyword) {
         List<LibraryMember> results = new ArrayList<>();
         for (LibraryMember member : members) {
         if (member.getName().toLowerCase().contains(keyword.toLowerCase()) ||
