@@ -1,4 +1,7 @@
 package com.zipcodewilmington.centrallibrary;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainApplication {
@@ -30,7 +33,7 @@ public void start() {
 
             String choice = scanner.nextLine();
 
-            switch (choice) {
+        switch (choice) {
                 case "1":
                     searchByType("Book");
                     break;
@@ -67,19 +70,145 @@ public void start() {
                     break;
                 default:
                     System.out.println("Invalid option. Please try again.");
-               }
+                }
             }
             scanner.close();
     }
 
     private void searchByType(String type) {
-        System.out.println("Enter a keyword to search:");
-        String keyword = scanner.nextLine();
-        library.search(keyword).forEach(item -> System.out.println(item.getTitle()));
+    System.out.println("Enter a keyword to search:");
+    String keyword = scanner.nextLine();
+    
+    List<LibraryItem> results = new ArrayList<>();
+    for (LibraryItem item : library.search(keyword)) {
+        if (item.getItemType().equalsIgnoreCase(type)) {
+            results.add(item);
+        }
     }
 
-    private void viewAllItems() {
-        library.getAllItems().forEach(item -> System.out.println(item.getTitle()));
+    while (true) {
+        // show current results
+        if (results.isEmpty()) {
+            System.out.println("No " + type + "s found.");
+        } else {
+            System.out.println("\n=== " + type + " Results (" + results.size() + " found) ===");
+            for (int i = 0; i < results.size(); i++) {
+                LibraryItem item = results.get(i);
+                System.out.println((i + 1) + ". " + item.getTitle()
+                    + " | " + (item.isAvailable() ? "Available" : "Checked Out"));
+            }
+        }
+
+        // prompt for next action
+        System.out.println("\nOptions:");
+        System.out.println("  S - Search further");
+        System.out.println("  R - Reset search");
+        System.out.println("  X - Back to main menu");
+        System.out.print("Choose: ");
+        String choice = scanner.nextLine().trim().toUpperCase();
+
+        switch (choice) {
+            case "S":
+                System.out.print("Enter keyword to narrow down: ");
+                String narrow = scanner.nextLine();
+                List<LibraryItem> narrowed = new ArrayList<>();
+                for (LibraryItem item : results) {
+                    if (item.matchesKeyword(narrow)) {
+                        narrowed.add(item);
+                    }
+                }
+                results = narrowed;
+                break;
+            case "R":
+                System.out.print("Enter new search keyword: ");
+                String reset = scanner.nextLine();
+                results = new ArrayList<>();
+                for (LibraryItem item : library.search(reset)) {
+                    if (item.getItemType().equalsIgnoreCase(type)) {
+                        results.add(item);
+                    }
+                }
+                break;
+            case "X":
+                return;
+            default:
+                System.out.println("Invalid option, try again.");
+        }
+    }
+}
+
+
+    private void borrowItem() {
+        System.out.println("Enter member ID");
+        String memberId = scanner.nextLine();
+        System.out.println("Enter item ID:");
+        String itemId = scanner.nextLine();
+        
+        LibraryMember member = findMember(memberId);
+        LibraryItem item = findItem(itemId);
+
+        if (member == null) {
+            System.out.println("Member not found.");
+            return;
+        }
+        if (item == null) {
+            System.out.println("Item not found.");
+            return;
+        }
+    
+        library.borrowItem(member, item);
+
+    }
+    private void returnItem() {
+        System.out.println("Enter member ID");
+        String memberId = scanner.nextLine();
+        System.out.println("Enter item ID:");
+        String itemId = scanner.nextLine();
+        
+        LibraryMember member = findMember(memberId);
+        LibraryItem item = findItem(itemId);
+
+        if (member == null) {
+            System.out.println("Member not found.");
+            return;
+        }
+        if (item == null) {
+            System.out.println("Item not found.");
+            return;
+        }
+    
+        library.returnItem(member, item);
+
     }
 
+    private void payFees() {
+        System.out.println("Enter member ID:");
+        String memberId = scanner.nextLine();
+
+        LibraryMember member = library.getMembers().stream()
+            .filter(m -> m.getMemberId().equals(memberId))
+            .findFirst().orElse(null);
+
+        if (member == null) { System.out.println("Member not found."); return; }
+
+        System.out.println("Outstanding fees: $" + member.getOutstandingFees());
+        System.out.println("Enter amount to pay:");
+        double amount = Double.parseDouble(scanner.nextLine());
+        member.payFees(amount);
+        System.out.println("Paid! Remaining fees: $" + member.getOutstandingFees());
+    }
+
+    private LibraryMember findMember(String memberId) {
+        for (LibraryMember m : library.getMembers()) {
+            if (m.getMemberId().equalsIgnoreCase(memberId)) return m;
+        }
+        return null;
+    }
+
+    private LibraryItem findItem(String itemId) {
+        for (LibraryItem i : library.getItems()) {
+            if (i.getId().equalsIgnoreCase(itemId)) return i;
+        }
+        return null;
+    }
 }

@@ -7,16 +7,14 @@ public class Person {
     private int age;
     //constructor initialized variable instances that belong to the person class
 
-    public Person(String name, int age, String phoneNumber, String email) {
+    public Person(String name, int age, String email, String phoneNumber) {
         this.name = name;
+        this.age = age;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.age = age;
     }
 
-    public Person() {
-        
-    }
+    
     //getters and setters for the person class
     public String getName() {
         return name;
@@ -49,7 +47,8 @@ public class Person {
     }
 
 
-    void setAge(int i) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public void setAge(int age) {
+        if (age < 0) throw new IllegalArgumentException("Age cannot be negative.");
+        this.age = age;
+}
 }

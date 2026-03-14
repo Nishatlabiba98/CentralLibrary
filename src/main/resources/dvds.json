@@ -1,0 +1,20 @@
+[
+  {
+    "id": "D001",
+    "title": "The Matrix",
+    "location": "D1",
+    "director": "Wachowski Sisters",
+    "duration": "136",
+    "rating": "R",
+    "genre": "Sci-Fi"
+  },
+  {
+    "id": "D002",
+    "title": "Inception",
+    "location": "D1",
+    "director": "Christopher Nolan",
+    "duration": "148",
+    "rating": "PG-13",
+    "genre": "Sci-Fi"
+  }
+]
