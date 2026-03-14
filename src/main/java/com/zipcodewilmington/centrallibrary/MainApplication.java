@@ -156,4 +156,18 @@ public void start() {
         member.payFees(amount);
         System.out.println("Paid! Remaining fees: $" + member.getOutstandingFees());
     }
+
+    private LibraryMember findMember(String memberId) {
+        for (LibraryMember m : library.getMembers()) {
+            if (m.getMemberId().equalsIgnoreCase(memberId)) return m;
+        }
+        return null;
+    }
+
+    private LibraryItem findItem(String itemId) {
+        for (LibraryItem i : library.getItems()) {
+            if (i.getId().equalsIgnoreCase(itemId)) return i;
+        }
+        return null;
+    }
 }
