@@ -1,17 +1,21 @@
 package com.zipcodewilmington.centrallibrary;
 
-public class Movie extends LibraryItem {
+public class Movie extends LibraryItem implements Reservable {
     private String director;
     private int duration;
     private String rating;
     private String genre; 
-    public Movie(String  id, String title, String location, String director, int duration, String rating, String genre) {
+
+
+public Movie(String  id, String title, String location, String director, String duration, String rating, String genre) {
+
         super(id, title, location);
         this.director = director;
         this.duration = duration;
         this.rating = rating;
         this.genre = genre;
-
+        this.isReserved = false;
+}
        
     }
     public String getDirector() {
@@ -41,10 +45,39 @@ public class Movie extends LibraryItem {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+    public LibraryMember getReservedBy()
+    { return reservedBy; }
 
     public String[] getSearchableFields() {
         return new String[]{getTitle(), director, genre, rating};
     }
     // add in the rating 
     
+
+    @Override
+    public String[] getSearchableFields() { 
+        return new String[]{getTitle(), director, duration, rating, genre};
+    }
+    @Override
+    public void reserve(LibraryMember member) {
+        if (isReserved) throw new IllegalStateException(getTitle() + " is already reserved.");
+        isReserved = true;
+        reservedBy = member;
+    }
+    
+    @Override
+    public void cancelReserve(LibraryMember member) {
+    isReserved = false;
+    reservedBy = null;
+    }
+    
+    @Override
+    public boolean isReserved() {
+        return isReserved; 
+    }
 }
+
+
+
+
+
