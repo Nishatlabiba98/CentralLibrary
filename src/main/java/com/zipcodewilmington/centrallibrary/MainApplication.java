@@ -1,5 +1,6 @@
 package com.zipcodewilmington.centrallibrary;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -75,19 +76,67 @@ public void start() {
     }
 
     private void searchByType(String type) {
-        System.out.println("Enter a keyword to search:");
-        String keyword = scanner.nextLine();
-        List<LibraryItem> results = library.search(keyword);
-        boolean found = false;
-        for (LibraryItem item : results) {
-            if (item.getItemType().equalsIgnoreCase(type)) {
-                System.out.println(item.getItemType() + " | " + item.getTitle()
+    System.out.println("Enter a keyword to search:");
+    String keyword = scanner.nextLine();
+    
+    List<LibraryItem> results = new ArrayList<>();
+    for (LibraryItem item : library.search(keyword)) {
+        if (item.getItemType().equalsIgnoreCase(type)) {
+            results.add(item);
+        }
+    }
+
+    while (true) {
+        // show current results
+        if (results.isEmpty()) {
+            System.out.println("No " + type + "s found.");
+        } else {
+            System.out.println("\n=== " + type + " Results (" + results.size() + " found) ===");
+            for (int i = 0; i < results.size(); i++) {
+                LibraryItem item = results.get(i);
+                System.out.println((i + 1) + ". " + item.getTitle()
                     + " | " + (item.isAvailable() ? "Available" : "Checked Out"));
-                found = true;
             }
         }
-        if (!found) System.out.println("No " + type + "s found matching \"" + keyword + "\".");
+
+        // prompt for next action
+        System.out.println("\nOptions:");
+        System.out.println("  S - Search further");
+        System.out.println("  R - Reset search");
+        System.out.println("  X - Back to main menu");
+        System.out.print("Choose: ");
+        String choice = scanner.nextLine().trim().toUpperCase();
+
+        switch (choice) {
+            case "S":
+                System.out.print("Enter keyword to narrow down: ");
+                String narrow = scanner.nextLine();
+                List<LibraryItem> narrowed = new ArrayList<>();
+                for (LibraryItem item : results) {
+                    if (item.matchesKeyword(narrow)) {
+                        narrowed.add(item);
+                    }
+                }
+                results = narrowed;
+                break;
+            case "R":
+                System.out.print("Enter new search keyword: ");
+                String reset = scanner.nextLine();
+                results = new ArrayList<>();
+                for (LibraryItem item : library.search(reset)) {
+                    if (item.getItemType().equalsIgnoreCase(type)) {
+                        results.add(item);
+                    }
+                }
+                break;
+            case "X":
+                return;
+            default:
+                System.out.println("Invalid option, try again.");
+        }
     }
+}
+
 
     private void borrowItem() {
         System.out.println("Enter member ID");

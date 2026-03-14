@@ -1,0 +1,22 @@
+[
+  {
+    "id": "MU001",
+    "title": "Thriller",
+    "location": "M1",
+    "artist": "Michael Jackson",
+    "album": "Thriller",
+    "genre": "Pop",
+    "language": "English",
+    "publicationDate": "11/30/1982"
+  },
+  {
+    "id": "MU002",
+    "title": "Purple Rain",
+    "location": "M1",
+    "artist": "Prince",
+    "album": "Purple Rain",
+    "genre": "R&B",
+    "language": "English",
+    "publicationDate": "06/25/1984"
+  }
+]
