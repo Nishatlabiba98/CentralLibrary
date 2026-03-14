@@ -10,7 +10,7 @@ public class Book extends LibraryItem implements Reservable {
     private boolean isReserved;
     private LibraryMember reservedBy;
 
-    public Book(String id, String title, String location, String author, String genre, String publicationDate, String isbn, int numberOfPages) {
+    public Book(String id, String title, String location, String author, String isbn, int numberOfPages, String genre, String publicationDate) {
         super(id, title, location);
         this.author = author;
         this.genre = genre;

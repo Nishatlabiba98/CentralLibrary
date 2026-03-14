@@ -1,5 +1,6 @@
 package com.zipcodewilmington.centrallibrary;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MainApplication {
@@ -76,9 +77,16 @@ public void start() {
     private void searchByType(String type) {
         System.out.println("Enter a keyword to search:");
         String keyword = scanner.nextLine();
-        library.search(keyword).stream()
-            .filter(item -> item.getItemType().equalsIgnoreCase(type))
-            .forEach(item -> System.out.println(item.getItemType() + " | " + item.getTitle()));
+        List<LibraryItem> results = library.search(keyword);
+        boolean found = false;
+        for (LibraryItem item : results) {
+            if (item.getItemType().equalsIgnoreCase(type)) {
+                System.out.println(item.getItemType() + " | " + item.getTitle()
+                    + " | " + (item.isAvailable() ? "Available" : "Checked Out"));
+                found = true;
+            }
+        }
+        if (!found) System.out.println("No " + type + "s found matching \"" + keyword + "\".");
     }
 
     private void borrowItem() {
