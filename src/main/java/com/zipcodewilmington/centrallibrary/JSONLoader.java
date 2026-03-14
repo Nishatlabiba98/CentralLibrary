@@ -1,10 +1,11 @@
 package com.zipcodewilmington.centrallibrary;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JSONLoader {
     private ObjectMapper mapper = new ObjectMapper();
@@ -35,7 +36,7 @@ public class JSONLoader {
                 node.get("location").asText(),
                 node.get("author").asText(),
                 node.get("isbn").asText(),
-                node.get("pages").asString(),
+                node.get("pages").asInt(),
                 node.get("genre").asText(),
                 node.get("publicationDate").asText()
             ));

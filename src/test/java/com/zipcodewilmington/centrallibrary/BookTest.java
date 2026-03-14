@@ -6,7 +6,7 @@ public class BookTest {
 
 public static void main(String[] args) {
 
-    Book book = new Book("A100", "The Great Gatsby", "Aisle 3", "John Smith", "Horror", "2/2/22", "293849595934", 9); 
+    Book book = new Book("A100", "The Great Gatsby", "Aisle 3", "John Smith", "Horror", 9, "293849595934", "2/2/22"); 
 
     System.out.println(book.getAuthor());
     System.out.println(book.getGenre());
