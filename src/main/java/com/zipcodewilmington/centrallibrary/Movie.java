@@ -2,13 +2,14 @@ package com.zipcodewilmington.centrallibrary;
 
 public class Movie extends LibraryItem implements Reservable {
     private String director;
-    private int duration;
+    private String duration;
     private String rating;
     private String genre; 
+    private boolean isReserved;
+    private LibraryMember reservedBy;
 
 
 public Movie(String  id, String title, String location, String director, String duration, String rating, String genre) {
-
         super(id, title, location);
         this.director = director;
         this.duration = duration;
@@ -17,7 +18,7 @@ public Movie(String  id, String title, String location, String director, String 
         this.isReserved = false;
 }
        
-    }
+    
     public String getDirector() {
         return director;
     }
@@ -25,10 +26,10 @@ public Movie(String  id, String title, String location, String director, String 
         this.director = director;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -46,13 +47,21 @@ public Movie(String  id, String title, String location, String director, String 
         this.genre = genre;
     }
     public LibraryMember getReservedBy()
-    { return reservedBy; }
+    { return reservedBy; } 
 
-    public String[] getSearchableFields() {
-        return new String[]{getTitle(), director, genre, rating};
+    @Override
+    public double calculateLateFee(int daysLate) {
+        return daysLate * 1.00;
     }
-    // add in the rating 
-    
+
+    @Override
+    public int getMaxBorrowDays() {
+        return 7;
+    }
+    @Override
+    public String getItemType() {
+        return "Movie";
+    }
 
     @Override
     public String[] getSearchableFields() { 
@@ -76,6 +85,7 @@ public Movie(String  id, String title, String location, String director, String 
         return isReserved; 
     }
 }
+
 
 
 
