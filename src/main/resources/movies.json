@@ -1,0 +1,20 @@
+[
+  {
+    "id": "MV001",
+    "title": "The Godfather",
+    "location": "D2",
+    "director": "Francis Ford Coppola",
+    "duration": "175",
+    "rating": "R",
+    "genre": "Crime"
+  },
+  {
+    "id": "MV002",
+    "title": "Jurassic Park",
+    "location": "D2",
+    "director": "Steven Spielberg",
+    "duration": "127",
+    "rating": "PG-13",
+    "genre": "Sci-Fi"
+  }
+]

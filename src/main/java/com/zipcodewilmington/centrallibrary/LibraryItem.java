@@ -9,13 +9,6 @@ public abstract class LibraryItem implements Searchable {
     private String location;
     private boolean isAvailable;
     
-    
-
-//constructor
-    public LibraryItem() {
-
-    }
-
     public LibraryItem(String id, String title, String location){
         this.id = id;
         this.title = title;
@@ -23,9 +16,7 @@ public abstract class LibraryItem implements Searchable {
         this.isAvailable = true;
         
     }
-
     
-
     public String getId() {
         return id;
     }
@@ -49,9 +40,6 @@ public abstract class LibraryItem implements Searchable {
 
     public boolean isAvailable() {
         return isAvailable;
-    }
-    public void setAvailable(boolean available) {
-        isAvailable = available;
     }
 
     public void checkOut() {

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "B001",
+    "title": "Java Programming",
+    "location": "A1",
+    "author": "John Doe",
+    "isbn": "978-1234567890",
+    "pages": 500,
+    "genre": "Programming",
+    "publicationDate": "01/01/2001"
+  },
+  {
+    "id": "B002",
+    "title": "Data Structures",
+    "location": "A2",
+    "author": "Jane Smith",
+    "isbn": "978-0987654321",
+    "pages": 400,
+    "genre": "Computer Science",
+    "publicationDate": "01/01/2005"
+  }
+]
