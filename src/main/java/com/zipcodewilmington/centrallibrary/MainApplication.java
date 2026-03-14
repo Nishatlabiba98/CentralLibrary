@@ -1,4 +1,5 @@
 package com.zipcodewilmington.centrallibrary;
+
 import java.util.Scanner;
 
 public class MainApplication {
@@ -67,7 +68,7 @@ public void start() {
                     break;
                 default:
                     System.out.println("Invalid option. Please try again.");
-               }
+                }
             }
             scanner.close();
     }
@@ -75,8 +76,63 @@ public void start() {
     private void searchByType(String type) {
         System.out.println("Enter a keyword to search:");
         String keyword = scanner.nextLine();
-        library.search(keyword).forEach(item -> System.out.println(item.getTitle()));
+        library.search(keyword).stream()
+            .filter(item -> item.getItemType().equalsIgnoreCase(type))
+            forEach(item -> System.out.println(item.getItemType() + " | " + item.getTitle()));
     }
+
+    private void borrowItem() {
+        System.out.println("Enter member ID");
+        String memberId = scanner.nextLine();
+        System.out.println("Enter item ID:");
+        String itemId = scanner.nextLine();
+        
+        LibraryMember member = library.getMembers().stream()
+            .filter(m -> m.getMemberId()equals(memberId))
+            .findFirst().orElse(null);
+        LibraryItem item = library.getItems().stream()
+            .filter(i -> i.getId().equals(itemId))
+            .findFirst().orElse(null);
+
+        if (member == null) {
+            System.err.println("Member not found.");
+            return;
+        }
+        if (item == null) {
+            System.err.println("Item not found.");
+            return;
+        }
+    
+        library.borrowItem(member, item);
+
+    }
+    private void returnItem() {
+        System.out.println("Enter member ID");
+        String memberId = scanner.nextLine();
+        System.out.println("Enter item ID:");
+        String itemId = scanner.nextLine();
+        
+        LibraryMember member = library.getMembers().stream()
+            .filter(m -> m.getMemberId()equals(memberId))
+            .findFirst().orElse(null);
+        LibraryItem item = library.getItems().stream()
+            .filter(i -> i.getId().equals(itemId))
+            .findFirst().orElse(null);
+
+        if (member == null) {
+            System.err.println("Member not found.");
+            return;
+        }
+        if (item == null) {
+            System.err.println("Item not found.");
+            return;
+        }
+    
+        library.returnItem(member, item);
+
+    }
+
+
 
     private void viewAllItems() {
         library.getAllItems().forEach(item -> System.out.println(item.getTitle()));
