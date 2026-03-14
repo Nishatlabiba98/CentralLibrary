@@ -3,6 +3,11 @@ package com.zipcodewilmington.centrallibrary;
 public class DVDTest {
 // Base class (superclass) DVD
 public abstract class DVD extends LibraryItem implements Reservable {
+    public DVD(String id, String title, String location) {
+        super(id, title, location);
+    
+    }
+
     private String title;
     private String director;
     private String duration;
