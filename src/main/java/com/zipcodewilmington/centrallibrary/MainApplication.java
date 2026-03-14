@@ -31,7 +31,7 @@ public void start() {
 
             String choice = scanner.nextLine();
 
-            switch (choice) {
+        switch (choice) {
                 case "1":
                     searchByType("Book");
                     break;
@@ -78,7 +78,7 @@ public void start() {
         String keyword = scanner.nextLine();
         library.search(keyword).stream()
             .filter(item -> item.getItemType().equalsIgnoreCase(type))
-            forEach(item -> System.out.println(item.getItemType() + " | " + item.getTitle()));
+            .forEach(item -> System.out.println(item.getItemType() + " | " + item.getTitle()));
     }
 
     private void borrowItem() {
@@ -88,7 +88,7 @@ public void start() {
         String itemId = scanner.nextLine();
         
         LibraryMember member = library.getMembers().stream()
-            .filter(m -> m.getMemberId()equals(memberId))
+            .filter(m -> m.getMemberId().equals(memberId))
             .findFirst().orElse(null);
         LibraryItem item = library.getItems().stream()
             .filter(i -> i.getId().equals(itemId))
@@ -113,7 +113,7 @@ public void start() {
         String itemId = scanner.nextLine();
         
         LibraryMember member = library.getMembers().stream()
-            .filter(m -> m.getMemberId()equals(memberId))
+            .filter(m -> m.getMemberId().equals(memberId))
             .findFirst().orElse(null);
         LibraryItem item = library.getItems().stream()
             .filter(i -> i.getId().equals(itemId))
@@ -132,10 +132,20 @@ public void start() {
 
     }
 
+    private void payFees() {
+        System.out.println("Enter member ID:");
+        String memberId = scanner.nextLine();
 
+        LibraryMember member = library.getMembers().stream()
+            .filter(m -> m.getMemberId().equals(memberId))
+            .findFirst().orElse(null);
 
-    private void viewAllItems() {
-        library.getAllItems().forEach(item -> System.out.println(item.getTitle()));
+        if (member == null) { System.out.println("Member not found."); return; }
+
+        System.out.println("Outstanding fees: $" + member.getOutstandingFees());
+        System.out.println("Enter amount to pay:");
+        double amount = Double.parseDouble(scanner.nextLine());
+        member.payFees(amount);
+        System.out.println("Paid! Remaining fees: $" + member.getOutstandingFees());
     }
-
 }
