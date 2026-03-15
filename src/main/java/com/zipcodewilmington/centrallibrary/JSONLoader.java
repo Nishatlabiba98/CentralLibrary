@@ -46,22 +46,57 @@ public class JSONLoader {
 
     public List<Periodical> loadPeriodicals() {
         List<Periodical> periodicals = new ArrayList<>();
-        JsonNode nodes = loadFile("periodicals.json");
+        JsonNode nodes = loadFile("periodicals_merged.json");
         if (nodes == null) return periodicals;
         for (JsonNode node : nodes) {
             periodicals.add(new Periodical(
                 node.get("id").asText(),
                 node.get("title").asText(),
-                node.get("location").asText(),
+                "General",
                 node.get("publisher").asText(),
-                node.get("issn").asText(),
-                node.get("volume").asText(),
-                node.get("issueNumber").asText(),
-                node.get("publicationDate").asText()
+                "N/A",
+                "N/A",
+                getIssueNumber(node),
+                getPublicationDate(node)
             ));
         }
         return periodicals;
     }
+
+    private String getIssueNumber(JsonNode node) {
+        JsonNode issueData = node.get("issue data");
+        if (issueData != null && issueData.isArray() && issueData.size() > 0) {
+            return issueData.get(0).get("issue_number").asText();
+        }
+        return "N/A";
+    }
+
+    private String getPublicationDate(JsonNode node) {
+        JsonNode issueData = node.get("issue data");
+        if (issueData != null && issueData.isArray() && issueData.size() > 0) {
+            return issueData.get(0).get("date_published").asText();
+        }
+        return "N/A";
+    }
+
+    // public List<Periodical> loadPeriodicals() {
+    //     List<Periodical> periodicals = new ArrayList<>();
+    //     JsonNode nodes = loadFile("periodicals.json");
+    //     if (nodes == null) return periodicals;
+    //     for (JsonNode node : nodes) {
+    //         periodicals.add(new Periodical(
+    //             node.get("id").asText(),
+    //             node.get("title").asText(),
+    //             node.get("location").asText(),
+    //             node.get("publisher").asText(),
+    //             node.get("issn").asText(),
+    //             node.get("volume").asText(),
+    //             node.get("issueNumber").asText(),
+    //             node.get("publicationDate").asText()
+    //         ));
+    //     }
+    //     return periodicals;
+    // }
 
     public List<DVD> loadDVDs() {
         List<DVD> dvds = new ArrayList<>();
