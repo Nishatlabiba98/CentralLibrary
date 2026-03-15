@@ -26,29 +26,34 @@ public class JSONLoader {
     }
 
     public List<Book> loadBooks() {
-        List<Book> books = new ArrayList<>();
-        JsonNode nodes = loadFile("books.json");
-        if (nodes == null) return books;
-        for (JsonNode node : nodes) {
-            books.add(new Book(
-                node.get("id").asText(),
-                node.get("title").asText(),
-                node.get("location").asText(),
-                node.get("author").asText(),
-                node.get("isbn").asText(),
-                node.get("pages").asInt(),
-                node.get("genre").asText(),
-                node.get("publicationDate").asText()
-            ));
-        }
-        return books;
+    List<Book> books = new ArrayList<>();
+    JsonNode nodes = loadFile("books_data.json");
+    if (nodes == null) return books;
+    int count = 0;
+    for (JsonNode node : nodes) {
+        if (count >= 1000) break; // limit to 1000 for performance
+        books.add(new Book(
+            node.get("Text#").asText(),           
+            node.get("Title").asText().replace("\r\n", " - "),           
+            "General",                             
+            node.get("Author(s)").asText(),        
+            "N/A",                                 
+            0,                                     
+            node.get("Subjects").asText(),         
+            node.get("Publication Date").asText()  
+        ));
+        count++;
     }
+    return books;
+}
 
     public List<Periodical> loadPeriodicals() {
         List<Periodical> periodicals = new ArrayList<>();
         JsonNode nodes = loadFile("periodicals_merged.json");
         if (nodes == null) return periodicals;
+        int count = 0;
         for (JsonNode node : nodes) {
+            if (count >= 1000) break;
             periodicals.add(new Periodical(
                 node.get("id").asText(),
                 node.get("title").asText(),
@@ -59,6 +64,7 @@ public class JSONLoader {
                 getIssueNumber(node),
                 getPublicationDate(node)
             ));
+            count++;
         }
         return periodicals;
     }
@@ -152,4 +158,5 @@ public class JSONLoader {
         }
         return movies;
     }
+    
 }
