@@ -90,8 +90,8 @@ public class JSONLoader {
                 node.get("id").asText(),
                 node.get("title").asText(),
                 node.get("location").asText(),
-                node.get("artist").asText(),
-                node.get("album").asText(),
+                node.get("artist_name").asText(),
+                node.get("album_name").asText(),
                 node.get("genre").asText(),
                 node.get("language").asText(),
                 node.get("publicationDate").asText()
