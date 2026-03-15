@@ -26,42 +26,83 @@ public class JSONLoader {
     }
 
     public List<Book> loadBooks() {
-        List<Book> books = new ArrayList<>();
-        JsonNode nodes = loadFile("books.json");
-        if (nodes == null) return books;
-        for (JsonNode node : nodes) {
-            books.add(new Book(
-                node.get("id").asText(),
-                node.get("title").asText(),
-                node.get("location").asText(),
-                node.get("author").asText(),
-                node.get("isbn").asText(),
-                node.get("pages").asInt(),
-                node.get("genre").asText(),
-                node.get("publicationDate").asText()
-            ));
-        }
-        return books;
+    List<Book> books = new ArrayList<>();
+    JsonNode nodes = loadFile("books_data.json");
+    if (nodes == null) return books;
+    int count = 0;
+    for (JsonNode node : nodes) {
+        if (count >= 1000) break; // limit to 1000 for performance
+        books.add(new Book(
+            node.get("Text#").asText(),           
+            node.get("Title").asText().replace("\r\n", " - "),           
+            "General",                             
+            node.get("Author(s)").asText(),        
+            "N/A",                                 
+            0,                                     
+            node.get("Subjects").asText(),         
+            node.get("Publication Date").asText()  
+        ));
+        count++;
     }
+    return books;
+}
 
     public List<Periodical> loadPeriodicals() {
         List<Periodical> periodicals = new ArrayList<>();
-        JsonNode nodes = loadFile("periodicals.json");
+        JsonNode nodes = loadFile("periodicals_merged.json");
         if (nodes == null) return periodicals;
+        int count = 0;
         for (JsonNode node : nodes) {
+            if (count >= 1000) break;
             periodicals.add(new Periodical(
                 node.get("id").asText(),
                 node.get("title").asText(),
-                node.get("location").asText(),
+                "General",
                 node.get("publisher").asText(),
-                node.get("issn").asText(),
-                node.get("volume").asText(),
-                node.get("issueNumber").asText(),
-                node.get("publicationDate").asText()
+                "N/A",
+                "N/A",
+                getIssueNumber(node),
+                getPublicationDate(node)
             ));
+            count++;
         }
         return periodicals;
     }
+
+    private String getIssueNumber(JsonNode node) {
+        JsonNode issueData = node.get("issue data");
+        if (issueData != null && issueData.isArray() && issueData.size() > 0) {
+            return issueData.get(0).get("issue_number").asText();
+        }
+        return "N/A";
+    }
+
+    private String getPublicationDate(JsonNode node) {
+        JsonNode issueData = node.get("issue data");
+        if (issueData != null && issueData.isArray() && issueData.size() > 0) {
+            return issueData.get(0).get("date_published").asText();
+        }
+        return "N/A";
+    }
+
+    // public List<Periodical> loadPeriodicals() {
+    //     List<Periodical> periodicals = new ArrayList<>();
+    //     JsonNode nodes = loadFile("periodicals.json");
+    //     if (nodes == null) return periodicals;
+    //     for (JsonNode node : nodes) {
+    //         periodicals.add(new Periodical(
+    //             node.get("id").asText(),
+    //             node.get("title").asText(),
+    //             node.get("location").asText(),
+    //             node.get("publisher").asText(),
+    //             node.get("issn").asText(),
+    //             node.get("volume").asText(),
+    //             node.get("issueNumber").asText(),
+    //             node.get("publicationDate").asText()
+    //         ));
+    //     }
+    //     return periodicals;
+    // }
 
     public List<DVD> loadDVDs() {
         List<DVD> dvds = new ArrayList<>();
@@ -90,8 +131,8 @@ public class JSONLoader {
                 node.get("id").asText(),
                 node.get("title").asText(),
                 node.get("location").asText(),
-                node.get("artist").asText(),
-                node.get("album").asText(),
+                node.get("artist_name").asText(),
+                node.get("album_name").asText(),
                 node.get("genre").asText(),
                 node.get("language").asText(),
                 node.get("publicationDate").asText()
@@ -117,4 +158,5 @@ public class JSONLoader {
         }
         return movies;
     }
+    
 }
