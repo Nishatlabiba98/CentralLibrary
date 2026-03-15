@@ -4,7 +4,7 @@ public class Movie extends LibraryItem implements Reservable {
     private String director;
     private String duration;
     private String rating;
-    private String genre; 
+    private String genre;
     private boolean isReserved;
     private LibraryMember reservedBy;
 
@@ -60,9 +60,9 @@ public Movie(String  id, String title, String location, String director, String 
     public String getItemType() {
         return "Movie";
     }
-    
+
     @Override
-    public String[] getSearchableFields() { 
+    public String[] getSearchableFields() {
         return new String[]{getTitle(), director, duration, rating, genre};
     }
     @Override
@@ -71,15 +71,15 @@ public Movie(String  id, String title, String location, String director, String 
         isReserved = true;
         reservedBy = member;
     }
-    
+
     @Override
     public void cancelReserve(LibraryMember member) {
     isReserved = false;
     reservedBy = null;
     }
-    
+
     @Override
     public boolean isReserved() {
-        return isReserved; 
+        return isReserved;
     }
 }

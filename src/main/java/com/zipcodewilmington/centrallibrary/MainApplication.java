@@ -164,7 +164,7 @@ public void start() {
         String memberId = scanner.nextLine();
         System.out.println("Enter item ID:");
         String itemId = scanner.nextLine();
-        
+    
         LibraryMember member = findMember(memberId);
         LibraryItem item = findItem(itemId);
 
