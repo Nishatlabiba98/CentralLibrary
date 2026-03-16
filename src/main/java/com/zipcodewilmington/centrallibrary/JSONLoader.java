@@ -85,25 +85,6 @@ public class JSONLoader {
         return "N/A";
     }
 
-    // public List<Periodical> loadPeriodicals() {
-    //     List<Periodical> periodicals = new ArrayList<>();
-    //     JsonNode nodes = loadFile("periodicals.json");
-    //     if (nodes == null) return periodicals;
-    //     for (JsonNode node : nodes) {
-    //         periodicals.add(new Periodical(
-    //             node.get("id").asText(),
-    //             node.get("title").asText(),
-    //             node.get("location").asText(),
-    //             node.get("publisher").asText(),
-    //             node.get("issn").asText(),
-    //             node.get("volume").asText(),
-    //             node.get("issueNumber").asText(),
-    //             node.get("publicationDate").asText()
-    //         ));
-    //     }
-    //     return periodicals;
-    // }
-
     public List<DVD> loadDVDs() {
         List<DVD> dvds = new ArrayList<>();
         JsonNode nodes = loadFile("dvds.json");
@@ -139,18 +120,18 @@ public class JSONLoader {
                 "Unknown",
                 node.get("release_date").asText()
             ));
-
+            count++;
         }
         return musicList;
     }
 
     public List<Movie> loadMovies() {
         List<Movie> movies = new ArrayList<>();
-        JsonNode nodes = loadFile("movies_data_sliver1.json");
+        JsonNode nodes = loadFile("movies_data.json");
         if (nodes == null) return movies;
         int count = 0;
         for (JsonNode node : nodes) {
-    if (count >= 1000) break;
+    //if (count >= 10000) break;
 
     // skip records with null title
     if (node.get("title") == null || node.get("title").isNull()) {
