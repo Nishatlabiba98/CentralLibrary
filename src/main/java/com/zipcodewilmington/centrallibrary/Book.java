@@ -1,9 +1,9 @@
 package com.zipcodewilmington.centrallibrary;
 
 public class Book extends LibraryItem implements Reservable {
-    
+
     private String author;
-    private String genre; 
+    private String genre;
     private int pages;
     private String isbn;
     private String publicationDate;

@@ -124,39 +124,79 @@ public class JSONLoader {
 
     public List<Music> loadMusic() {
         List<Music> musicList = new ArrayList<>();
-        JsonNode nodes = loadFile("music.json");
+        JsonNode nodes = loadFile("music_data.json");
         if (nodes == null) return musicList;
+        int count = 0;
         for (JsonNode node : nodes) {
+            if (count >= 1000) break;
             musicList.add(new Music(
-                node.get("id").asText(),
-                node.get("title").asText(),
-                node.get("location").asText(),
+                node.get("unnamed:_0").asText(),
+                node.get("track_name").asText(),
+                "General",
                 node.get("artist_name").asText(),
-                node.get("album_name").asText(),
+                node.get("track_name").asText(),
                 node.get("genre").asText(),
-                node.get("language").asText(),
-                node.get("publicationDate").asText()
+                "Unknown",
+                node.get("release_date").asText()
             ));
+
         }
         return musicList;
     }
 
     public List<Movie> loadMovies() {
         List<Movie> movies = new ArrayList<>();
-        JsonNode nodes = loadFile("movies.json");
+        JsonNode nodes = loadFile("movies_data_sliver1.json");
         if (nodes == null) return movies;
+        int count = 0;
         for (JsonNode node : nodes) {
-            movies.add(new Movie(
-                node.get("id").asText(),
-                node.get("title").asText(),
-                node.get("location").asText(),
-                node.get("director").asText(),
-                node.get("duration").asText(),
-                node.get("rating").asText(),
-                node.get("genre").asText()
-            ));
+    if (count >= 1000) break;
+
+    // skip records with null title
+    if (node.get("title") == null || node.get("title").isNull()) {
+        continue; // don't increment count, just skip
+    }
+
+    // skip records with null runtime
+    if (node.get("runtime") == null || node.get("runtime").isNull()) {
+        continue;
+    }
+
+    // skip records with null crew
+    if (node.get("crew") == null || node.get("crew").isNull()) {
+        continue;
+    }
+
+    movies.add(new Movie(
+    node.get("tmdb_id").asText(),
+    node.get("title").asText(),
+    "General",
+    extractDirector(node.get("crew").asText()),
+    String.valueOf((int) node.get("runtime").asDouble()),
+    String.valueOf(node.get("rating").asBoolean()),
+    extractGenre(node.get("genres").asText())
+    ));
+    count++;
         }
         return movies;
     }
-    
+    private String extractGenre(String genresStr) {
+    if (genresStr == null || genresStr.isEmpty()) return "Unknown";
+    int nameIndex = genresStr.indexOf("'name': '");
+    if (nameIndex == -1) return "Unknown";
+    int start = nameIndex + 9;
+    int end = genresStr.indexOf("'", start);
+    return end > start ? genresStr.substring(start, end) : "Unknown";
+}
+
+    private String extractDirector(String crewStr) {
+        if (crewStr == null || crewStr.isEmpty()) return "Unknown";
+        int directorIndex = crewStr.indexOf("'job': 'Director'");
+        if (directorIndex == -1) return "Unknown";
+        int nameIndex = crewStr.lastIndexOf("'name': '", directorIndex);
+        if (nameIndex == -1) return "Unknown";
+        int start = nameIndex + 9;
+        int end = crewStr.indexOf("'", start);
+        return end > start ? crewStr.substring(start, end) : "Unknown";
+    }
 }
