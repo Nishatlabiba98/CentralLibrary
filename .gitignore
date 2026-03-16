@@ -105,4 +105,4 @@ target/*
 .classpath
 .settings
 
-src/resources/*.json
+src/main/resources/*.json
