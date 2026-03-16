@@ -85,25 +85,6 @@ public class JSONLoader {
         return "N/A";
     }
 
-    // public List<Periodical> loadPeriodicals() {
-    //     List<Periodical> periodicals = new ArrayList<>();
-    //     JsonNode nodes = loadFile("periodicals.json");
-    //     if (nodes == null) return periodicals;
-    //     for (JsonNode node : nodes) {
-    //         periodicals.add(new Periodical(
-    //             node.get("id").asText(),
-    //             node.get("title").asText(),
-    //             node.get("location").asText(),
-    //             node.get("publisher").asText(),
-    //             node.get("issn").asText(),
-    //             node.get("volume").asText(),
-    //             node.get("issueNumber").asText(),
-    //             node.get("publicationDate").asText()
-    //         ));
-    //     }
-    //     return periodicals;
-    // }
-
     public List<DVD> loadDVDs() {
         List<DVD> dvds = new ArrayList<>();
         JsonNode nodes = loadFile("dvds.json");
