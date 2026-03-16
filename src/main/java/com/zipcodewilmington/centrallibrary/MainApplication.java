@@ -89,7 +89,7 @@ public void start() {
     while (true) {
         // show current results
         if (results.isEmpty()) {
-            System.out.println("No " + type + "s found.");
+            System.out.println("No " + type + " found.");
         } else {
             System.out.println("\n=== " + type + " Results (" + results.size() + " found) ===");
             for (int i = 0; i < results.size(); i++) {
