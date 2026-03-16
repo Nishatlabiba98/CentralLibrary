@@ -63,6 +63,7 @@ public class Library {
 
     public List<LibraryItem> search(String keyword) {
         List<LibraryItem> results = new ArrayList<>();
+        System.out.printf("%d Searchable items.\n", items.size());
         for (LibraryItem item : items) {
             if (item.matchesKeyword(keyword)) {
                 results.add(item);
