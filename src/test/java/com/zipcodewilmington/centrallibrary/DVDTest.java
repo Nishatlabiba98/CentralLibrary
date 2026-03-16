@@ -33,10 +33,10 @@ public String getRating() {
     return rating;
 }
 
-    public interface Reservable {
-    void reserve(String user);
-    boolean isReserved();
-}
+   // public interface Reservable {
+    //void reserve(String user);
+    //boolean isReserved(); 
+//}
 
 
     public String getType() {
